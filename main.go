@@ -1,15 +1,12 @@
 package main
 
-import (
-  "fmt"
-  "net/http"
-  )
+import "net/http"
   
-  func mesaj(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "3")
+  func anasayfa(w http.ResponseWriter, r *http.Request) {
+    http.ServeFile(w, r, "./anasayfa.html")
   }
 
 func main() {
-    http.HandleFunc("/", mesaj)
+    http.HandleFunc("/", anasayfa)
     http.ListenAndServe(":8080", nil)
 }
